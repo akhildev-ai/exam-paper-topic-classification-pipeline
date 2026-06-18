@@ -1,50 +1,77 @@
 # Exam Paper Topic Classification Pipeline
 
-## Problem Statement
+This project was built to automate a task that is usually done manually: going through years of exam papers, separating them into questions, identifying the topic of each question, and then summarizing which topics appear most often over time.
 
-Educational institutions accumulate large archives of exam question papers across many years. Manual review of those papers is slow, inconsistent, and hard to scale. This project automates the pipeline required to:
+The final system covers the full workflow asked for in the problem statement:
 
 1. extract text from PDF and TXT papers,
-2. segment papers into structured question-level records,
-3. classify each question into one or more academic topics,
-4. aggregate topic trends across years, and
-5. validate predictions against human-labeled questions.
+2. split each paper into question-level records,
+3. classify questions into one or more topics,
+4. generate topic-wise and year-wise summaries,
+5. validate the predictions against labeled data,
+6. expose the results through both JSON outputs and a small Streamlit dashboard.
 
-All primary outputs are produced as JSON so the system can be used both as a batch pipeline and as a backend for a dashboard.
+## What the project does
 
-## Solution Summary
+The input to the pipeline is:
 
-The solution is a modular Python 3.10+ pipeline composed of five stages:
+- a folder of exam papers in PDF or TXT format,
+- a configurable `topics.yaml` file,
+- a labeled validation dataset.
 
-1. `Extraction`: Reads PDF papers with PyMuPDF and TXT papers with UTF-8 fallback handling.
-2. `Segmentation`: Detects sections, numbered questions, sub-questions, and common marks patterns.
-3. `Classification`: Uses a hybrid strategy combining configurable keyword rules, semantic similarity with SentenceTransformers, and an optional local LLM fallback.
-4. `Aggregation`: Computes total topic counts, year-wise distributions, trend data, unclassified questions, and multi-topic questions.
-5. `Validation`: Compares predictions against a labeled dataset and reports accuracy, precision, recall, and F1 score.
+The output is a set of JSON files containing:
 
-## Repository Structure
+- extracted paper text,
+- segmented questions,
+- classified questions with confidence scores,
+- topic summary reports,
+- validation metrics.
 
-- `src/extract_text.py`: PDF/TXT extraction and paper record creation.
-- `src/segment_questions.py`: Question parsing and metadata preservation.
-- `src/classify_topics.py`: Hybrid topic classifier.
-- `src/aggregate_report.py`: Aggregation and trend report generation.
-- `src/validate.py`: Validation metrics and record-level evaluation.
-- `src/main.py`: CLI pipeline orchestration.
-- `app.py`: Streamlit dashboard for uploads, charts, and report downloads.
-- `configs/topics.yaml`: Configurable topic definitions and keywords.
-- `data/validation_questions.json`: 50 labeled validation questions.
-- `outputs/`: Generated JSON artifacts.
+## End-to-end workflow
 
-## Part 1: Question Extraction and Segmentation
+```mermaid
+flowchart LR
+		A[Exam Papers PDF/TXT] --> B[Text Extraction]
+		B --> C[Question Segmentation]
+		C --> D[Question Records with Metadata]
+		E[topics.yaml] --> F[Hybrid Topic Classifier]
+		D --> F
+		F --> G[Classified Questions JSON]
+		G --> H[Aggregation and Trend Reports]
+		I[Labeled Validation Questions] --> J[Validation Module]
+		F --> J
+		H --> K[Streamlit Dashboard]
+		J --> K
+		H --> L[JSON Outputs]
+		J --> L
+```
 
-The extraction and segmentation stages are designed to handle typical exam formatting variation:
+## Approach
 
-- main question numbering such as `1`, `2`, `3`
-- sub-questions such as `(a)`, `5(b)`
-- multi-section papers such as `Section A`, `Section B`, `Part C`
-- marks formats such as `[4]`, `(5 Marks)`, `10M`
+I kept the project modular so each stage can be tested separately.
 
-Each segmented record preserves the metadata required by the problem statement:
+- `src/extract_text.py` handles PDF and TXT reading.
+- `src/segment_questions.py` converts paper text into question-level records.
+- `src/classify_topics.py` applies the hybrid topic classifier.
+- `src/aggregate_report.py` builds the summary and trend reports.
+- `src/validate.py` compares predictions with labeled questions.
+- `src/main.py` ties the full pipeline together.
+- `app.py` provides a simple Streamlit interface.
+
+## Part 1: Question extraction and segmentation
+
+The first step is turning raw paper text into structured question objects.
+
+The segmenter handles common exam-paper patterns such as:
+
+- numbered questions like `1`, `2`, `3`
+- sub-questions like `(a)`, `(b)`, `5(b)`
+- section headers like `Section A`, `Section B`, `Part C`
+- marks formats like `[4]`, `(5 Marks)`, `10M`
+
+Each extracted question keeps the important metadata required in the assignment.
+
+Example:
 
 ```json
 {
@@ -58,26 +85,31 @@ Each segmented record preserves the metadata required by the problem statement:
 }
 ```
 
-## Part 2: Topic Classification
+## Part 2: Topic classification
 
-Topic definitions are fully configurable through `configs/topics.yaml`, so new topics or keywords can be added without code changes.
+Topic classification is configurable through `configs/topics.yaml`, so topics and keywords can be changed without touching the code.
 
-### Classification Strategy
+The classifier is hybrid:
 
-The classifier is hybrid by design:
+1. keyword matching for direct topic cues,
+2. semantic similarity using `all-MiniLM-L6-v2`,
+3. optional local LLM fallback for low-confidence cases.
 
-1. `Keyword matching`: Fast deterministic scoring using topic names, aliases, and keywords.
-2. `Semantic similarity`: SentenceTransformers embeddings using `all-MiniLM-L6-v2`.
-3. `Optional LLM fallback`: Local open-source instruct model such as `Qwen/Qwen2.5-7B-Instruct` for low-confidence cases.
+The main model choice was:
 
-### Model Choice
+- `all-MiniLM-L6-v2`
+	It is open-source, lightweight, fast enough for batch processing, and suitable for semantic matching on regular hardware.
+- `Qwen/Qwen2.5-7B-Instruct`
+	This is optional and only used as a fallback when needed. It stays within the project requirement of using open-source models.
 
-- `SentenceTransformers all-MiniLM-L6-v2`
-	Reason: lightweight, fast, open-source, and suitable for semantic retrieval/classification on commodity hardware.
-- `Qwen2.5-7B-Instruct` as optional fallback
-	Reason: open-source, instruction-tuned, and feasible within the stated 24GB VRAM budget when used selectively.
+The classifier supports:
 
-### Classification Output Format
+- confidence scores,
+- multi-topic classification,
+- duplicate-topic prevention,
+- YAML-based topic configuration.
+
+Example classified output:
 
 ```json
 {
@@ -86,7 +118,7 @@ The classifier is hybrid by design:
 			"name": "Algebra",
 			"confidence": 0.6,
 			"keyword_score": 0.6,
-			"semantic_score": 0.0,
+			"semantic_score": 0.3655,
 			"matched_keywords": ["equation", "matrix"],
 			"source": "hybrid"
 		}
@@ -97,19 +129,17 @@ The classifier is hybrid by design:
 }
 ```
 
-The classifier avoids duplicate topic assignments by deduplicating selected topics before returning results.
+## Part 3: Aggregation and trend analysis
 
-## Part 3: Aggregation and Trend Analysis
+Once each question is classified, the pipeline generates:
 
-The reporting layer generates:
+- total questions per topic,
+- year-wise topic distribution,
+- topic trend data across years,
+- unclassified questions,
+- multi-topic questions.
 
-1. total questions per topic,
-2. year-wise topic distribution,
-3. per-topic trend data across years,
-4. unclassified questions, and
-5. multi-topic questions.
-
-Example aggregate summary from the bundled sample run:
+Sample summary from the current run:
 
 ```json
 {
@@ -129,48 +159,38 @@ Example aggregate summary from the bundled sample run:
 }
 ```
 
-## Part 4: Confidence and Validation
+## Part 4: Validation
 
-Validation is implemented in `src/validate.py` and compares predicted topics against a 50-question labeled dataset.
+For validation, the project uses a labeled dataset of 50 questions and compares predicted topics against the ground truth labels.
 
-### Current Validation Result
-
-Latest run from `outputs/validation_report.json`:
+Latest verified result from `outputs/validation_report.json`:
 
 - Accuracy: `0.74`
 - Precision: `0.9762`
 - Recall: `0.7593`
 - F1 Score: `0.8542`
 
-These numbers were produced from the local run included in this repository. In that run, semantic similarity was automatically disabled because `sentence-transformers` was not installed in the local environment, so the classifier fell back to keyword-based hybrid scoring only. Once the dependency is installed, semantic matching is enabled automatically without code changes.
+These results came from the final local run after enabling the semantic model path, so the current repository reflects the complete hybrid pipeline rather than keyword-only matching.
 
-## System Design Notes
+## Why this design fits the assignment
 
-### Why this design fits the constraints
-
-- `Open-source only`: PyMuPDF, SentenceTransformers, Transformers, Streamlit, Plotly, and PyYAML are open-source.
-- `<=24GB VRAM`: The default semantic model is lightweight, and the optional LLM path is only used for fallback classification.
-- `Process within 30 minutes`: The pipeline is batch-oriented, uses lightweight parsing rules, and computes embeddings lazily.
-- `JSON outputs`: Every major artifact is written as JSON.
-
-### Robustness Features
-
-- logging across all stages,
-- defensive error handling for file extraction and model loading,
-- type hints in all core modules,
-- unit tests for segmentation, classification, and validation,
-- Streamlit UI for interactive use.
+- It uses open-source tools and models only.
+- The default semantic model is small enough to run comfortably within the stated hardware limits.
+- The pipeline writes all major outputs as JSON.
+- The code is split into small modules instead of one long script.
+- There are tests for segmentation, classification, and validation.
+- The dashboard is included as an extra usable interface on top of the core pipeline.
 
 ## Dashboard
 
 The Streamlit app supports:
 
-1. uploading PDF and TXT papers,
-2. uploading a topics config,
-3. optionally uploading a validation dataset,
-4. running the analysis pipeline,
-5. showing topic and trend charts, and
-6. downloading JSON reports.
+1. uploading papers,
+2. uploading a topic config,
+3. optionally uploading a validation file,
+4. running the analysis,
+5. viewing topic and trend charts,
+6. downloading generated reports.
 
 Run it with:
 
@@ -178,9 +198,22 @@ Run it with:
 streamlit run app.py
 ```
 
-## Setup and Execution
+## Project structure
 
-### Install
+- `src/extract_text.py`
+- `src/segment_questions.py`
+- `src/classify_topics.py`
+- `src/aggregate_report.py`
+- `src/validate.py`
+- `src/main.py`
+- `app.py`
+- `configs/topics.yaml`
+- `data/validation_questions.json`
+- `outputs/`
+
+## How to run
+
+Install dependencies:
 
 ```powershell
 py -3 -m venv .venv
@@ -188,27 +221,27 @@ py -3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-### Run the CLI pipeline
+Run the pipeline:
 
 ```powershell
 py -3 -m src.main --input-dir data --topics configs/topics.yaml --output-dir outputs --validation data/validation_questions.json
 ```
 
-### Optional LLM fallback
-
-```powershell
-py -3 -m src.main --input-dir data --topics configs/topics.yaml --output-dir outputs --validation data/validation_questions.json --use-llm-fallback --llm-model Qwen/Qwen2.5-7B-Instruct
-```
-
-### Run tests
+Run tests:
 
 ```powershell
 py -3 -m pytest tests -q
 ```
 
-## Output Artifacts
+Optional local LLM fallback:
 
-The pipeline writes these JSON artifacts:
+```powershell
+py -3 -m src.main --input-dir data --topics configs/topics.yaml --output-dir outputs --validation data/validation_questions.json --use-llm-fallback --llm-model Qwen/Qwen2.5-7B-Instruct
+```
+
+## Output files
+
+The pipeline generates:
 
 - `outputs/papers_extracted.json`
 - `outputs/questions_segmented.json`
@@ -216,38 +249,9 @@ The pipeline writes these JSON artifacts:
 - `outputs/aggregate_report.json`
 - `outputs/validation_report.json`
 
-## Evaluation Rubric Coverage
+## Current limitations
 
-### Segmentation accuracy
-
-Handled with regex-based parsing for sections, numbered questions, sub-parts, and marks extraction.
-
-### Classification
-
-Implemented as a configurable hybrid classifier with confidence scores and multi-topic support.
-
-### Aggregation
-
-Implemented through report generation for totals, yearly distributions, trends, unclassified items, and multi-topic items.
-
-### System design
-
-Modular architecture, JSON-first outputs, optional dashboard, and configurable topic definitions.
-
-### Code quality
-
-Type hints, logging, tests, error handling, and separation of responsibilities by module.
-
-## Limitations and Future Improvements
-
-1. Semantic matching depends on installing `sentence-transformers` locally.
-2. The optional LLM fallback is implemented but should be enabled only when a suitable local model is available.
-3. Segmentation currently relies on common exam patterns and can be extended further for institution-specific formatting.
-4. More labeled validation data would improve calibration and threshold tuning.
-
-## Submission Deliverables Checklist
-
-1. `Working code`: included.
-2. `Model choice`: documented above.
-3. `Sample output JSON`: included in this README and in `outputs/`.
-4. `Write-up`: included in this README.
+1. The first semantic run downloads `all-MiniLM-L6-v2`, so it is slower than later cached runs.
+2. The optional LLM fallback is implemented, but it should only be enabled if a local model is available.
+3. The segmentation rules cover common exam formats, but they can still be extended for institution-specific layouts.
+4. More labeled questions would help with further tuning and calibration.
