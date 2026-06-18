@@ -1,0 +1,48 @@
+topics:
+  - name: Calculus
+    description: Differential and integral calculus problems.
+    keywords:
+      - derivative
+      - differentiation
+      - integrate
+      - integration
+      - limit
+      - area under the curve
+    aliases:
+      - infinitesimal calculus
+  - name: Geometry
+    description: Euclidean geometry, coordinate geometry, and mensuration.
+    keywords:
+      - triangle
+      - circle
+      - polygon
+      - angle
+      - area enclosed
+      - coordinate geometry
+  - name: Algebra
+    description: Algebraic expressions, equations, and matrix methods.
+    keywords:
+      - polynomial
+      - equation
+      - matrix
+      - determinant
+      - factorization
+      - solve for x
+  - name: Probability
+    description: Probability and random variable analysis.
+    keywords:
+      - probability
+      - random variable
+      - expectation
+      - permutation
+      - combination
+      - binomial
+  - name: Statistics
+    description: Descriptive and inferential statistical analysis.
+    keywords:
+      - mean
+      - median
+      - standard deviation
+      - variance
+      - regression
+      - correlation

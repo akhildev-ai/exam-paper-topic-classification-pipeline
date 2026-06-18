@@ -1,0 +1,147 @@
+[
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "1",
+    "marks": 2,
+    "text": "Define the limit of a function.",
+    "topics": [
+      {
+        "name": "Calculus",
+        "confidence": 0.35,
+        "keyword_score": 0.35,
+        "semantic_score": 0.2017,
+        "matched_keywords": [
+          "limit"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.35
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "2",
+    "marks": 4,
+    "text": "Find the derivative of x^2 + 3x.",
+    "topics": [
+      {
+        "name": "Calculus",
+        "confidence": 0.35,
+        "keyword_score": 0.35,
+        "semantic_score": 0.2221,
+        "matched_keywords": [
+          "derivative"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.35
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "2(a)",
+    "marks": 3,
+    "text": "Evaluate the derivative at x = 2.",
+    "topics": [
+      {
+        "name": "Calculus",
+        "confidence": 0.35,
+        "keyword_score": 0.35,
+        "semantic_score": 0.2842,
+        "matched_keywords": [
+          "derivative"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.35
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "3",
+    "marks": 6,
+    "text": "Find the area enclosed between the curve y = x^2 and the x-axis.",
+    "topics": [
+      {
+        "name": "Geometry",
+        "confidence": 0.5,
+        "keyword_score": 0.5,
+        "semantic_score": 0.2061,
+        "matched_keywords": [
+          "area enclosed"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.5
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "4",
+    "marks": 5,
+    "text": "Solve the matrix equation AX = B.",
+    "topics": [
+      {
+        "name": "Algebra",
+        "confidence": 0.6,
+        "keyword_score": 0.6,
+        "semantic_score": 0.3655,
+        "matched_keywords": [
+          "equation",
+          "matrix"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.6
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "5",
+    "marks": 4,
+    "text": "Calculate the probability of getting two heads in three tosses.",
+    "topics": [
+      {
+        "name": "Probability",
+        "confidence": 0.55,
+        "keyword_score": 0.55,
+        "semantic_score": 0.2703,
+        "matched_keywords": [
+          "Probability"
+        ],
+        "source": "hybrid"
+      }
+    ],
+    "multi_topic": false,
+    "classification_status": "classified",
+    "top_confidence": 0.55
+  }
+]

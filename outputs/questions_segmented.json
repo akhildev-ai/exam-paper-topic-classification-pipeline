@@ -1,0 +1,56 @@
+[
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "1",
+    "marks": 2,
+    "text": "Define the limit of a function."
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "2",
+    "marks": 4,
+    "text": "Find the derivative of x^2 + 3x."
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "A",
+    "question_number": "2(a)",
+    "marks": 3,
+    "text": "Evaluate the derivative at x = 2."
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "3",
+    "marks": 6,
+    "text": "Find the area enclosed between the curve y = x^2 and the x-axis."
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "4",
+    "marks": 5,
+    "text": "Solve the matrix equation AX = B."
+  },
+  {
+    "year": 2023,
+    "paper": "sample_exam_2023",
+    "paper_name": "sample_exam_2023",
+    "section": "B",
+    "question_number": "5",
+    "marks": 4,
+    "text": "Calculate the probability of getting two heads in three tosses."
+  }
+]

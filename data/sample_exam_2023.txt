@@ -1,0 +1,8 @@
+Section A
+1. Define the limit of a function. [2]
+2. Find the derivative of x^2 + 3x. (4 Marks)
+(a) Evaluate the derivative at x = 2. 3M
+Section B
+3. Find the area enclosed between the curve y = x^2 and the x-axis. [6]
+4. Solve the matrix equation AX = B. 5M
+5. Calculate the probability of getting two heads in three tosses. [4]

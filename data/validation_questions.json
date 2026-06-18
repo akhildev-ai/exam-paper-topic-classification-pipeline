@@ -1,0 +1,61 @@
+[
+  {"question_id": "val-001", "year": 2023, "paper": "Mathematics_Paper1", "section": "A", "question_number": "1", "marks": 4, "text": "Find the derivative of x^3 + 2x.", "labels": ["Calculus"]},
+  {"question_id": "val-002", "year": 2023, "paper": "Mathematics_Paper1", "section": "A", "question_number": "2", "marks": 5, "text": "Evaluate the integral of 2x cos x.", "labels": ["Calculus"]},
+  {"question_id": "val-003", "year": 2023, "paper": "Mathematics_Paper1", "section": "B", "question_number": "3", "marks": 6, "text": "Find the area enclosed between y = x^2 and the x-axis.", "labels": ["Calculus", "Geometry"]},
+  {"question_id": "val-004", "year": 2023, "paper": "Mathematics_Paper1", "section": "B", "question_number": "4", "marks": 5, "text": "State the limit definition of continuity.", "labels": ["Calculus"]},
+  {"question_id": "val-005", "year": 2023, "paper": "Mathematics_Paper1", "section": "C", "question_number": "5", "marks": 8, "text": "Find the tangent and normal to the curve at the given point.", "labels": ["Calculus", "Geometry"]},
+
+  {"question_id": "val-006", "year": 2022, "paper": "Mathematics_Paper2", "section": "A", "question_number": "1", "marks": 4, "text": "Solve the quadratic equation x^2 - 5x + 6 = 0.", "labels": ["Algebra"]},
+  {"question_id": "val-007", "year": 2022, "paper": "Mathematics_Paper2", "section": "A", "question_number": "2", "marks": 6, "text": "Find the determinant of the given matrix.", "labels": ["Algebra"]},
+  {"question_id": "val-008", "year": 2022, "paper": "Mathematics_Paper2", "section": "B", "question_number": "3", "marks": 5, "text": "Factorize the polynomial x^3 - 6x^2 + 11x - 6.", "labels": ["Algebra"]},
+  {"question_id": "val-009", "year": 2022, "paper": "Mathematics_Paper2", "section": "B", "question_number": "4", "marks": 5, "text": "Solve the matrix equation AX = B for X.", "labels": ["Algebra"]},
+  {"question_id": "val-010", "year": 2022, "paper": "Mathematics_Paper2", "section": "C", "question_number": "5", "marks": 7, "text": "Discuss the roots of the polynomial using algebraic methods.", "labels": ["Algebra"]},
+
+  {"question_id": "val-011", "year": 2021, "paper": "Mathematics_Paper3", "section": "A", "question_number": "1", "marks": 4, "text": "Find the area of the triangle formed by the coordinate axes and the line.", "labels": ["Geometry"]},
+  {"question_id": "val-012", "year": 2021, "paper": "Mathematics_Paper3", "section": "A", "question_number": "2", "marks": 5, "text": "Prove that angles in the same segment of a circle are equal.", "labels": ["Geometry"]},
+  {"question_id": "val-013", "year": 2021, "paper": "Mathematics_Paper3", "section": "B", "question_number": "3", "marks": 6, "text": "Find the equation of the tangent to the circle at the given point.", "labels": ["Geometry"]},
+  {"question_id": "val-014", "year": 2021, "paper": "Mathematics_Paper3", "section": "B", "question_number": "4", "marks": 5, "text": "Compute the distance between two points in coordinate geometry.", "labels": ["Geometry"]},
+  {"question_id": "val-015", "year": 2021, "paper": "Mathematics_Paper3", "section": "C", "question_number": "5", "marks": 8, "text": "Find the area enclosed by the circle and the chord.", "labels": ["Geometry"]},
+
+  {"question_id": "val-016", "year": 2020, "paper": "Mathematics_Paper4", "section": "A", "question_number": "1", "marks": 4, "text": "Compute the probability of drawing two red balls without replacement.", "labels": ["Probability"]},
+  {"question_id": "val-017", "year": 2020, "paper": "Mathematics_Paper4", "section": "A", "question_number": "2", "marks": 5, "text": "Find the number of permutations of the word MATHEMATICS.", "labels": ["Probability"]},
+  {"question_id": "val-018", "year": 2020, "paper": "Mathematics_Paper4", "section": "B", "question_number": "3", "marks": 5, "text": "Use combinations to choose a committee of 3 from 8 students.", "labels": ["Probability"]},
+  {"question_id": "val-019", "year": 2020, "paper": "Mathematics_Paper4", "section": "B", "question_number": "4", "marks": 6, "text": "A random variable follows a binomial distribution. Find its expectation.", "labels": ["Probability"]},
+  {"question_id": "val-020", "year": 2020, "paper": "Mathematics_Paper4", "section": "C", "question_number": "5", "marks": 7, "text": "Find the probability mass function of the given random variable.", "labels": ["Probability"]},
+
+  {"question_id": "val-021", "year": 2019, "paper": "Mathematics_Paper5", "section": "A", "question_number": "1", "marks": 5, "text": "Calculate the mean and variance of the data set.", "labels": ["Statistics"]},
+  {"question_id": "val-022", "year": 2019, "paper": "Mathematics_Paper5", "section": "A", "question_number": "2", "marks": 5, "text": "Find the median and mode of the grouped frequency distribution.", "labels": ["Statistics"]},
+  {"question_id": "val-023", "year": 2019, "paper": "Mathematics_Paper5", "section": "B", "question_number": "3", "marks": 6, "text": "Compute the standard deviation for the sample.", "labels": ["Statistics"]},
+  {"question_id": "val-024", "year": 2019, "paper": "Mathematics_Paper5", "section": "B", "question_number": "4", "marks": 6, "text": "Find the regression line of y on x.", "labels": ["Statistics"]},
+  {"question_id": "val-025", "year": 2019, "paper": "Mathematics_Paper5", "section": "C", "question_number": "5", "marks": 7, "text": "Discuss the correlation coefficient for the given observations.", "labels": ["Statistics"]},
+
+  {"question_id": "val-026", "year": 2018, "paper": "Mathematics_Paper6", "section": "A", "question_number": "1", "marks": 4, "text": "Differentiate sin x + x^2.", "labels": ["Calculus"]},
+  {"question_id": "val-027", "year": 2018, "paper": "Mathematics_Paper6", "section": "A", "question_number": "2", "marks": 5, "text": "Integrate x/(1+x^2) with respect to x.", "labels": ["Calculus"]},
+  {"question_id": "val-028", "year": 2018, "paper": "Mathematics_Paper6", "section": "B", "question_number": "3", "marks": 6, "text": "Find the derivative and determine the slope of the tangent.", "labels": ["Calculus", "Geometry"]},
+  {"question_id": "val-029", "year": 2018, "paper": "Mathematics_Paper6", "section": "B", "question_number": "4", "marks": 5, "text": "Evaluate the definite integral between the given limits.", "labels": ["Calculus"]},
+  {"question_id": "val-030", "year": 2018, "paper": "Mathematics_Paper6", "section": "C", "question_number": "5", "marks": 7, "text": "Use integration to find the area under the curve.", "labels": ["Calculus", "Geometry"]},
+
+  {"question_id": "val-031", "year": 2017, "paper": "Mathematics_Paper7", "section": "A", "question_number": "1", "marks": 4, "text": "Solve the system of linear equations using matrices.", "labels": ["Algebra"]},
+  {"question_id": "val-032", "year": 2017, "paper": "Mathematics_Paper7", "section": "A", "question_number": "2", "marks": 5, "text": "Find the inverse of the matrix if it exists.", "labels": ["Algebra"]},
+  {"question_id": "val-033", "year": 2017, "paper": "Mathematics_Paper7", "section": "B", "question_number": "3", "marks": 5, "text": "Use factorization to solve the cubic equation.", "labels": ["Algebra"]},
+  {"question_id": "val-034", "year": 2017, "paper": "Mathematics_Paper7", "section": "B", "question_number": "4", "marks": 6, "text": "Find the eigenvalues of the matrix.", "labels": ["Algebra"]},
+  {"question_id": "val-035", "year": 2017, "paper": "Mathematics_Paper7", "section": "C", "question_number": "5", "marks": 7, "text": "Simplify the algebraic expression and solve for x.", "labels": ["Algebra"]},
+
+  {"question_id": "val-036", "year": 2016, "paper": "Mathematics_Paper8", "section": "A", "question_number": "1", "marks": 4, "text": "Find the coordinates of the centroid of the triangle.", "labels": ["Geometry"]},
+  {"question_id": "val-037", "year": 2016, "paper": "Mathematics_Paper8", "section": "A", "question_number": "2", "marks": 5, "text": "Show that the polygon is cyclic.", "labels": ["Geometry"]},
+  {"question_id": "val-038", "year": 2016, "paper": "Mathematics_Paper8", "section": "B", "question_number": "3", "marks": 6, "text": "Find the equation of the line passing through two points in coordinate geometry.", "labels": ["Geometry"]},
+  {"question_id": "val-039", "year": 2016, "paper": "Mathematics_Paper8", "section": "B", "question_number": "4", "marks": 5, "text": "Compute the radius of the circle from the given coordinates.", "labels": ["Geometry"]},
+  {"question_id": "val-040", "year": 2016, "paper": "Mathematics_Paper8", "section": "C", "question_number": "5", "marks": 7, "text": "Determine the area enclosed by the polygon.", "labels": ["Geometry"]},
+
+  {"question_id": "val-041", "year": 2015, "paper": "Mathematics_Paper9", "section": "A", "question_number": "1", "marks": 4, "text": "A coin is tossed four times. Find the probability of exactly two heads.", "labels": ["Probability"]},
+  {"question_id": "val-042", "year": 2015, "paper": "Mathematics_Paper9", "section": "A", "question_number": "2", "marks": 5, "text": "Use permutations to arrange 5 books on a shelf.", "labels": ["Probability"]},
+  {"question_id": "val-043", "year": 2015, "paper": "Mathematics_Paper9", "section": "B", "question_number": "3", "marks": 5, "text": "Find the probability that a random variable exceeds 3.", "labels": ["Probability"]},
+  {"question_id": "val-044", "year": 2015, "paper": "Mathematics_Paper9", "section": "B", "question_number": "4", "marks": 6, "text": "Compute the expectation of the discrete random variable.", "labels": ["Probability"]},
+  {"question_id": "val-045", "year": 2015, "paper": "Mathematics_Paper9", "section": "C", "question_number": "5", "marks": 7, "text": "Apply combinations to count possible selections.", "labels": ["Probability"]},
+
+  {"question_id": "val-046", "year": 2014, "paper": "Mathematics_Paper10", "section": "A", "question_number": "1", "marks": 4, "text": "Find the arithmetic mean of the observations.", "labels": ["Statistics"]},
+  {"question_id": "val-047", "year": 2014, "paper": "Mathematics_Paper10", "section": "A", "question_number": "2", "marks": 5, "text": "Calculate variance and standard deviation for the distribution.", "labels": ["Statistics"]},
+  {"question_id": "val-048", "year": 2014, "paper": "Mathematics_Paper10", "section": "B", "question_number": "3", "marks": 6, "text": "Find the median of the grouped data.", "labels": ["Statistics"]},
+  {"question_id": "val-049", "year": 2014, "paper": "Mathematics_Paper10", "section": "B", "question_number": "4", "marks": 6, "text": "Draw conclusions from the regression output.", "labels": ["Statistics"]},
+  {"question_id": "val-050", "year": 2014, "paper": "Mathematics_Paper10", "section": "C", "question_number": "5", "marks": 7, "text": "Interpret the correlation between the two variables.", "labels": ["Statistics"]}
+]

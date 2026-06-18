@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "total_questions": 6,
+    "classified_questions": 6,
+    "unclassified_questions": 0,
+    "multi_topic_questions": 0,
+    "topics_covered": 4
+  },
+  "topic_totals": {
+    "Algebra": 1,
+    "Calculus": 3,
+    "Geometry": 1,
+    "Probability": 1
+  },
+  "yearly_topic_distribution": {
+    "2023": {
+      "Algebra": 1,
+      "Calculus": 3,
+      "Geometry": 1,
+      "Probability": 1
+    }
+  },
+  "topic_trends": {
+    "Algebra": [
+      {
+        "year": 2023,
+        "count": 1
+      }
+    ],
+    "Calculus": [
+      {
+        "year": 2023,
+        "count": 3
+      }
+    ],
+    "Geometry": [
+      {
+        "year": 2023,
+        "count": 1
+      }
+    ],
+    "Probability": [
+      {
+        "year": 2023,
+        "count": 1
+      }
+    ]
+  },
+  "unclassified_questions": [],
+  "multi_topic_questions": []
+}
