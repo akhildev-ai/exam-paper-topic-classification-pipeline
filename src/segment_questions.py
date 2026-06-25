@@ -10,9 +10,13 @@ LOGGER = logging.getLogger(__name__)
 
 SECTION_PATTERN = re.compile(r"^(?:section|part)\s*[-:]?\s*([A-Za-z0-9]+)", flags=re.IGNORECASE)
 NUMBER_WITH_SUB_PATTERN = re.compile(
-    r"^(?:q(?:uestion)?\s*)?(?P<num>\d{1,3})\s*[\(\[]\s*(?P<sub>[A-Za-z])\s*[\)\]]\s*[\.:\-]?\s*(?P<text>.*)$"
+    r"^(?:q(?:uestion)?\s*)?(?P<num>\d{1,3})\s*[\(\[]\s*(?P<sub>[A-Za-z])\s*[\)\]]\s*[\.:\-]?\s*(?P<text>.*)$",
+    flags=re.IGNORECASE,
 )
-NUMBER_PATTERN = re.compile(r"^(?:q(?:uestion)?\s*)?(?P<num>\d{1,3})\s*[\).:\-]?\s+(?P<text>.*)$")
+NUMBER_PATTERN = re.compile(
+    r"^(?:q(?:uestion)?\s*)?(?P<num>\d{1,3})\s*[\).:\-]?\s+(?P<text>.*)$",
+    flags=re.IGNORECASE,
+)
 SUB_PATTERN = re.compile(r"^[\(\[]?(?P<sub>[A-Za-z])[\)\].:\-]\s+(?P<text>.*)$")
 
 
